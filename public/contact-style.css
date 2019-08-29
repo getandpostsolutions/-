@@ -120,3 +120,9 @@ h5{
 	font-size: 1em;
 }
 }
+.card bg-light mb-3{
+	 transition: transform .2s;
+}
+.card bg-light mb-3:hover{
+	transform: scale(1.2);
+}
