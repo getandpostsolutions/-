@@ -4,5 +4,6 @@
 # 2. change directory to the cloned repository folder
 # 3. run following commands on your terminal: 
 #    a. npm install
-#    b. nodemon server
+#    b. nodemon server --> npm install -g nodemon
+#    c. npm start
 # 4. Open http://localhost:3000 on your browser
