@@ -103,6 +103,45 @@
 </style>
 <script>
 window.onload = function(){
+  function template(name,rating,review){
+    var header = ` <div class="col-sm-4">
+            <div class="card bg-light mb-3"  style="height: auto">
+
+              <div class="card-body">
+                <h5 class="card-title"><strong>`+name+`</strong></h5>
+                <h6>`
+                  
+   var footer =  `</h6>
+                <p class="card-text">
+                  <i>`+review+`</i></p>
+              </div>
+            </div>
+          </div>`
+    for(let i = 0 ; i < rating ; i ++){
+      header += ` <span class="fa fa-star checked"></span>`;
+    }      
+    for(let i = 0 ; i < 5-rating ; i ++){
+      header += `<span class="fa fa-star"></span>`;
+    }
+    var template = header + footer;
+    return template;
+  }
+
+
+  function getReviews()
+  {$.ajax({
+    method:"GET",
+    url:"/getReviews",
+    success:function(data){
+      console.log(data);
+      let htmlString =  template(data[0].name,data[0].rating,data[0].review) +  template(data[1].name,data[1].rating,data[1].review)+  template(data[2].name,data[2].rating,data[2].review);
+      console.log(htmlString);
+      let reviewSection = document.getElementById('reviewRow');
+      reviewSection.innerHTML = ""
+      reviewSection.innerHTML = htmlString;
+    }
+  })}
+  getReviews();
 
   var scrollHeader =  document.getElementById('scroll-nav');
   scrollHeader.style.display = "none";
@@ -115,6 +154,27 @@ window.onload = function(){
     $('#modalClose').click(function(){
       modal.style.display="none";
     })
+
+    $("#submitReview").click(function(){
+      let form = $('#reviewForm').serialize();
+        console.log('Send form');
+      $.ajax({
+        method:'POST',
+        data:form,
+        url:'/submitReview',
+        success:function(result){
+         
+          if(result == "saved"){
+            alert("Review was saved");
+          }else{
+            alert("Error in saving data");
+          }
+        },
+        error:function(jqXHR,status,error){
+
+        }
+      })
+    });
   })
 
   // alert("DOM LOAD")
@@ -342,21 +402,7 @@ window.onload = function(){
         <div class="row" id="reviewRow">
 
           <!-- Review Content -->
-          <div class="col-sm-4">
-            <div class="card bg-light mb-3" data-aos="fade-up" style="height: auto">
-
-              <div class="card-body">
-                <h5 class="card-title"><strong>Arun Kumar</strong></h5>
-                <h6><span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span></h6>
-                <p class="card-text">
-                  <i>Get and Post delivered the project on time and the quality was impeccable</i></p>
-              </div>
-            </div>
-          </div>
+         
 
         </div>
       </div>
@@ -377,12 +423,12 @@ window.onload = function(){
               <input type="email" name="email" id="email">
               <br>              
               <label for="rating" required>Rating of our service</label>
-              <input type="number" name="" id="" min="1" max="5" value="1">
+              <input type="number" name="rating" id="rating" min="1" max="5" value="1">
               <br>
               
               <textarea name="review" id="review" cols="30" rows="5" placeholder="Enter your review here"></textarea>
             </form>
-            <button class="btn btn-success">Submit my review!</button>
+            <button class="btn btn-success" id="submitReview">Submit my review!</button>
           </div>
 
       </div>
