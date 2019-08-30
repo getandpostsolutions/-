@@ -21,10 +21,98 @@ hr{
    background-image: linear-gradient( 109.6deg,  rgba(185,212,242,1) 11.2%, rgba(244,210,226,1) 100.3% );
   }
 
-.navbar{
+
+
+
+
+
+
+.scene{
+    width: 90px;
+    height: 80px;
+}
+.box{
+    width: 100%;
+    height: 80%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-out;
+    transform-origin: 0 0;
+}
+.scene:hover .box{
+    transform:rotateX(-90deg);
+    cursor: pointer;
+}
+.face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+}
+.front{
+    transform: rotateX(0deg);
+    background-color: darkgray;
+;
+}
+.right{
+    transform: rotateX(90deg);
+    left: 80px;
+    background-color: aliceblue;
+    color: #393e46;
+    font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+.mid{
+    
+    top: 50%;
+    transform: translate3d(-50);
+    width: 100%;
+    display: list-item;
+    
+}
+.text{
+    padding-left: 3%;
+    padding-top: 3%;
+    font-weight: bold;
+	font-size: 4rem;
+	color : black;
+    text-shadow: 0px 1px 1px black;
+    
+	z-index: 10;
+    
+    
+    
+
+    cursor: pointer;
+    
+}
+.hidden{
+    max-width: 0;
+    opacity: 0;
+    transition: 0.4s ease-in;
+}
+.text:hover .hidden{
+    opacity: 1;
+    max-width: lem;
+}
+
+
+
+
+
+
+
+/*.navbar{
 	padding-top: 1%;
 	justify-content: center !important; 
-}
+}*/
 
 .nav-links{
 	display: flex;
