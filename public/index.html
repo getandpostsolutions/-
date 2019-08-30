@@ -38,6 +38,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- custom stylesheet -->
   <link rel="stylesheet" type="text/css" href="public/style.css">
 
@@ -55,6 +57,49 @@
 .scroll-header{
   justify-content: flex-start !important;
 }
+#modal{
+  /* display: blo; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 30; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* margin-top: 35%; */
+}
+.modal-container{
+  margin-top: 10%;
+ width: 60%;
+  background-color: wheat;
+  padding: 1%;
+}
+.modal-content{
+  background-color: inherit !important;
+  border: none !important;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.modal-header{
+  font-weight: bold;
+}
+.checked {
+  color: orange;
+}
+#reviewButton{
+  position: fixed;
+    top: 50%;
+    /* left: 86%; */
+    transform: rotate(90deg);
+    /* float: right; */
+    right: 0;
+    margin-right: -45px;
+    background: beige;
+    z-index: 29;
+    
+}
 </style>
 <script>
 window.onload = function(){
@@ -62,6 +107,15 @@ window.onload = function(){
   var scrollHeader =  document.getElementById('scroll-nav');
   scrollHeader.style.display = "none";
  
+  var modal = document.getElementById('modal');
+  modal.style.display="none";
+
+  $('#reviewButton').click(function(){
+    modal.style.display="block";
+    $('#modalClose').click(function(){
+      modal.style.display="none";
+    })
+  })
 
   // alert("DOM LOAD")
 
@@ -135,6 +189,7 @@ window.onload = function(){
              <a href="/contact"><button class="btn btn-outline-secondary" type="button" style="top:30px">Register</button></a> 
             </form>
     </nav>
+    <button id="reviewButton" class="btn">Drop a review!</button>
 
     <div id="particles-js"></div>
     <div class="row container-fluid">
@@ -277,8 +332,64 @@ window.onload = function(){
         </div>
 
       </div>
+
+      <!-- Reviews -->
+      <div class="col-sm-12">
+        <div class="services-heading">
+          <h3>Our Reviews</h3>
+        </div>
+
+        <div class="row" id="reviewRow">
+
+          <!-- Review Content -->
+          <div class="col-sm-4">
+            <div class="card bg-light mb-3" data-aos="fade-up" style="height: auto">
+
+              <div class="card-body">
+                <h5 class="card-title"><strong>Arun Kumar</strong></h5>
+                <h6><span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span></h6>
+                <p class="card-text">
+                  <i>Get and Post delivered the project on time and the quality was impeccable</i></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Feedback Modal -->
+  <!-- Button trigger modal -->
+  <div id="modal" data-aos="fade-up">
+      <div class="container modal-container">
+        <div class="modal-header">Hey!, we would love to hear your feedback <button class="btn btn-outline-secondary" style="float: right" id="modalClose">Close</button></div>
+        <div class="container modal-content">
+            <form id="reviewForm">
+              <label for="name" required>Your Name</label>
+              <input type="text" id="name" name="name">
+                <br>
+              <label for="email" required>Your Email</label>
+              <input type="email" name="email" id="email">
+              <br>              
+              <label for="rating" required>Rating of our service</label>
+              <input type="number" name="" id="" min="1" max="5" value="1">
+              <br>
+              
+              <textarea name="review" id="review" cols="30" rows="5" placeholder="Enter your review here"></textarea>
+            </form>
+            <button class="btn btn-success">Submit my review!</button>
+          </div>
+
+      </div>
+     
+      
+  </div>
+
 
   <section id="footer">
     <!-- Footer -->
