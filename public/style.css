@@ -16,8 +16,11 @@ hr {
 /*Section Header*/
 
 .navbar {
-	padding-top: 1%;
-	justify-content: center !important;
+	z-index: 1000;
+	justify-content: center !important;	
+	position: fixed;
+	width: 100%;
+	margin-bottom: 100px;
 }
 
 .nav-links {
@@ -42,12 +45,13 @@ hr {
 	position: absolute;
 	width: 100%;
 	height: 90%;
+	top: 10%;
 }
 
 .container-fluid {
 	display: inline-flex;
 	justify-content: center;
-	padding-top: 5%;
+	padding-top: 12%;
 	padding-bottom: 21%;
 	margin-right: 0px;
 	margin-left: 0px;
@@ -103,13 +107,13 @@ hr {
 }
 
 .button_div .btn-1:hover {
-	background: none;
+	background: #ffff;
 	border: 1px solid #c82333;
 	color: black;
 }
 
 .button_div .btn-2 {
-	background: none;
+	background: #ffff;
 	border: 1px solid #c82333;
 	color: black;
 	font-size: 16px;
@@ -133,6 +137,9 @@ hr {
 		margin-top: 40px;
 		margin-left: 23%;
 		height: 130px;
+	}
+	.container-fluid {
+		padding-top: 25%;
 	}
 }
 
@@ -243,6 +250,13 @@ hr {
 	}
 	.about-content p {
 		margin-top: 40px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.about-content h3 {
+		position: relative;
+		left: 3.5%;
 	}
 }
 
@@ -410,7 +424,7 @@ hr {
 .icons-ul {
 	display: flex;
 	justify-content: space-evenly;
-	width: 40%;
+	width: 20%;
 	margin-top: 10px;
 }
 
