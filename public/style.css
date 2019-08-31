@@ -144,7 +144,7 @@ hr{
 #about{
 	position: relative;
 	z-index: 10;
-	background-image: url(bg-pattern.jpg);                      /* : linear-gradient(#000000,#414345);*/
+	background-image: url(images/bg-pattern.jpg);                      /* : linear-gradient(#000000,#414345);*/
   align-content: center;
   color : #f2f2f2;
 }
@@ -227,7 +227,7 @@ hr{
 
 #services{
 	padding: 5% 2% 10%;
-	background-image: url(papyrus.png);
+	background-image: url(images/papyrus.png);
 	color : #000033;
 }
 
